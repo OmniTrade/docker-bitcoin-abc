@@ -4,7 +4,7 @@ RUN groupadd -r bitcoin && useradd -r -m -g bitcoin bitcoin
 
 RUN set -ex \
 	&& apt-get update \
-	&& apt-get install -qq --no-install-recommends ca-certificates dirmngr gosu gpg wget \
+	&& apt-get install -qq --no-install-recommends ca-certificates dirmngr gosu gpg wget python procps htop\
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV BITCOIN_VERSION 0.14.2
@@ -33,6 +33,10 @@ RUN mkdir "$BITCOIN_DATA" \
 VOLUME /data
 
 COPY docker-entrypoint.sh /entrypoint.sh
+COPY rabbitmqadmin /usr/bin/rabbitmqadmin
+
+RUN chmod +x /usr/bin/rabbitmqadmin
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 8332 8333 18332 18333
