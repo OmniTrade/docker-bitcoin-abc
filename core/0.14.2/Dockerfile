@@ -8,6 +8,7 @@ RUN set -ex \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade google-cloud-logging
+RUN pip install --upgrade grpcio==1.7.3
 
 ENV BITCOIN_VERSION 0.14.2
 ENV BITCOIN_URL https://bitcoin.org/bin/bitcoin-core-0.14.2/bitcoin-0.14.2-x86_64-linux-gnu.tar.gz
