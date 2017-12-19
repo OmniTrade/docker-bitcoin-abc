@@ -4,8 +4,10 @@ RUN groupadd -r bitcoin && useradd -r -m -g bitcoin bitcoin
 
 RUN set -ex \
 	&& apt-get update \
-	&& apt-get install -qq --no-install-recommends ca-certificates dirmngr gosu gpg wget python procps htop\
+	&& apt-get install -qq --no-install-recommends ca-certificates dirmngr gosu gpg wget python-setuptools python-pip procps htop\
 	&& rm -rf /var/lib/apt/lists/*
+
+RUN pip install --upgrade google-cloud-logging
 
 ENV BITCOIN_VERSION 0.14.2
 ENV BITCOIN_URL https://bitcoin.org/bin/bitcoin-core-0.14.2/bitcoin-0.14.2-x86_64-linux-gnu.tar.gz
@@ -34,8 +36,10 @@ VOLUME /data
 
 COPY docker-entrypoint.sh /entrypoint.sh
 COPY rabbitmqadmin /usr/bin/rabbitmqadmin
+COPY google-logger /usr/bin/google-logger
 
 RUN chmod +x /usr/bin/rabbitmqadmin
+RUN chmod +x /usr/bin/google-logger
 
 ENTRYPOINT ["/entrypoint.sh"]
 
