@@ -49,5 +49,5 @@ if __name__ == '__main__':
 
     if args.command == 'write':
         write_entry(args.logger_name, args.message)
-    elsif args.command == 'list':
+    elif args.command == 'list':
         list_entries(args.logger_name)
