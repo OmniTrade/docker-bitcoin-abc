@@ -20,6 +20,7 @@ if [[ "$1" == "bitcoin-cli" || "$1" == "bitcoin-tx" || "$1" == "bitcoind" || "$1
 	chown -R bitcoin "$BITCOIN_DATA"
 	ln -sfn "$BITCOIN_DATA" /home/bitcoin/.bitcoin
 	chown -h bitcoin:bitcoin /home/bitcoin/.bitcoin
+    chmod +x /usr/bin/*
 
 	exec gosu bitcoin "$@"
 fi
