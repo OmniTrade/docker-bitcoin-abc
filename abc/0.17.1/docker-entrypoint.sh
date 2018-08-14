@@ -10,7 +10,9 @@ if [[ "$1" == "bitcoin-cli" || "$1" == "bitcoin-tx" || "$1" == "bitcoind" || "$1
 		rpcallowip=::/0
 		rpcpassword=${BITCOIN_RPC_PASSWORD:-password}
 		rpcuser=${BITCOIN_RPC_USER:-bitcoin}
-		EOF
+		server=1
+        walletnotify=/usr/bin/rabbitmqadmin -H ${RABBITMQ_HOST:-localhost} -P 443 --ssl --vhost ${RABBITMQ_USER:-user} -u ${RABBITMQ_USER:-user} -p ${RABBITMQ_PASSWORD:-password} publish routing_key=minerx.deposit.coin payload='{"txid":"%s", "channel_key":"satoshi"}' 
+        EOF
 		chown bitcoin:bitcoin "$BITCOIN_DATA/bitcoin.conf"
 	fi
 
@@ -20,7 +22,6 @@ if [[ "$1" == "bitcoin-cli" || "$1" == "bitcoin-tx" || "$1" == "bitcoind" || "$1
 	chown -R bitcoin "$BITCOIN_DATA"
 	ln -sfn "$BITCOIN_DATA" /home/bitcoin/.bitcoin
 	chown -h bitcoin:bitcoin /home/bitcoin/.bitcoin
-    chmod +x /usr/bin/*
 
 	exec gosu bitcoin "$@"
 fi
