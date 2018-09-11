@@ -8,9 +8,9 @@ ENV BITCOIN_SHA256 71f217e30e98d5ccc1fb574b9499595e87e118e596278fad5507a7b846508
 # Vars related to data directory creation 
 ENV BITCOIN_DATA /data
 
-COPY ../docker-entrypoint.sh /entrypoint.sh
-COPY ../rabbitmqadmin /usr/bin/rabbitmqadmin
-COPY ../google-logger /usr/bin/google-logger
+COPY docker-entrypoint.sh /entrypoint.sh
+COPY rabbitmqadmin /usr/bin/rabbitmqadmin
+COPY google-logger /usr/bin/google-logger
 
 
 RUN groupadd -r bitcoin && useradd -r -m -g bitcoin bitcoin \
