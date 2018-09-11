@@ -7,7 +7,7 @@ ENV BITCOIN_SHA256 f955a929d4412b479115abecdb54e8b57791bb59c8578ccfaefb13eb625bc
 # Vars related to data directory creation 
 ENV BITCOIN_DATA /data
 
-COPY docker-entrypoint.sh /entrypoint.sh
+COPY ../docker-entrypoint.sh /entrypoint.sh
 COPY ../rabbitmqadmin /usr/bin/rabbitmqadmin
 COPY ../google-logger /usr/bin/google-logger
 
