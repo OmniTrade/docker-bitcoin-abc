@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-ENV BITCOIN_VERSION 0.16.2
+ENV BITCOIN_VERSION 0.16.3
 ENV BITCOIN_URL https://bitcoincore.org/bin/bitcoin-core-0.16.2/bitcoin-0.16.2-x86_64-linux-gnu.tar.gz
 ENV BITCOIN_SHA256 71f217e30e98d5ccc1fb574b9499595e87e118e596278fad5507a7b84650859c
 # ENV BITCOIN_ASC_URL https://bitcoin.org/bin/bitcoin-core-0.16.2/SHA256SUMS.asc
