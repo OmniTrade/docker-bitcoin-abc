@@ -1,9 +1,9 @@
 FROM debian:stretch-slim
-ENV BITCOIN_VERSION_FAMILY 0.19
-ENV BITCOIN_VERSION 0.19.6
+ENV BITCOIN_VERSION_FAMILY 0.20
+ENV BITCOIN_VERSION 0.20.6
 ENV BITCOIN_URL https://download.bitcoinabc.org/$BITCOIN_VERSION/linux/bitcoin-abc-$BITCOIN_VERSION-x86_64-linux-gnu.tar.gz
 # get bitcoin-abc sha here: https://download.bitcoinabc.org/$BITCOIN_VERSION/linux/bitcoin-abc-$BITCOIN_VERSION_FAMILY-linux-res.yml 
-ENV BITCOIN_SHA256 b84aad1c0061fcafdef1b89cb75e2fc79be8f0a872fad8b1c40eebe59652a2d2
+ENV BITCOIN_SHA256 f5fb4a3dac6164709dbf0632f64adfe56414d260e4bf192effc0049da9c43bac
 # Vars related to data directory creation 
 ENV BITCOIN_DATA /data
 
